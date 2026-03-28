@@ -8,19 +8,15 @@
         position: relative;
     }
 
-    /* 1. Define the flight path AND the scaling transformation */
-    @keyframes flyAndScale {
+    /* 1. Define the flight path AND the growing transformation */
+    @keyframes flyAndGrow {
         0% {
-            /* Starts at normal size on the far left */
-            transform: translateX(0) scale(1, 1); 
-        }
-        50% {
-            /* At 2 seconds (50% of 4s), it stretches to 3x width and 1.25x height */
-            transform: translateX(50vw) scale(3, 1.25); 
+            /* Starts on the far left at 20% of its regular size */
+            transform: translateX(0) scale(0.2); 
         }
         100% {
-            /* Holds that stretched shape as it flies off the right side */
-            transform: translateX(100vw) scale(3, 1.25); 
+            /* Flies to the right while growing to 100% of its regular size (1) */
+            transform: translateX(100vw) scale(1); 
         }
     }
 
@@ -31,9 +27,9 @@
         position: absolute;
         left: 0;       
         top: 0;        
-        /* Ensures the bird stretches from its center, rather than its top-left corner */
+        /* Ensures the bird grows from its center, rather than its top-left corner */
         transform-origin: center center; 
-        animation: flyAndScale 4s linear infinite; 
+        animation: flyAndGrow 4s linear infinite; 
     }
 </style>
 </head>
