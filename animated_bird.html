@@ -1,9 +1,28 @@
 <html>
     <head>
-         <style type=”text/css”>
-             body {
-                 margin: 0px;
-             }
+    <style type="text/css">
+    body {
+        margin: 0px;
+        overflow: hidden; /* Prevents horizontal scrollbars when the bird leaves the screen */
+    }
+
+    /* 1. Define the flight path */
+    @keyframes flyRight {
+        0% {
+            transform: translateX(0); /* Starts at its original position */
+        }
+        100% {
+            transform: translateX(100vw); /* Moves 100% of the viewport width to the right */
+        }
+    }
+
+    /* 2. Apply the animation to the bird */
+    svg {
+        animation: flyRight 4s ease-in-out infinite; 
+        /* 4s = takes 4 seconds to complete */
+        /* ease-in-out = starts slow, speeds up, and slows down at the end */
+        /* infinite = loops forever */
+    }
 </style>
 </head>
 <body>
