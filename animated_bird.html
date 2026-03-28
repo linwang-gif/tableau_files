@@ -1,27 +1,31 @@
 <html>
     <head>
-    <style type="text/css">
+<style type="text/css">
     body {
         margin: 0px;
-        overflow: hidden; /* Prevents horizontal scrollbars when the bird leaves the screen */
+        overflow: hidden; /* Prevents scrollbars */
+        height: 100vh;    /* Tells the body to fill the exact height of the Tableau container */
+        position: relative;
     }
 
     /* 1. Define the flight path */
     @keyframes flyRight {
         0% {
-            transform: translateX(0); /* Starts at its original position */
+            transform: translateX(0); /* Starts exactly at its leftmost position */
         }
         100% {
-            transform: translateX(100vw); /* Moves 100% of the viewport width to the right */
+            transform: translateX(100vw); /* Flies off to the right side of the container */
         }
     }
 
-    /* 2. Apply the animation to the bird */
+    /* 2. Apply styling and animation to the bird */
     svg {
-        animation: flyRight 4s ease-in-out infinite; 
-        /* 4s = takes 4 seconds to complete */
-        /* ease-in-out = starts slow, speeds up, and slows down at the end */
-        /* infinite = loops forever */
+        height: 100vh; /* Scales the bird so its height matches the container perfectly */
+        width: auto;   /* Ensures the bird doesn't stretch or warp */
+        position: absolute;
+        left: 0;       /* Forces the bird to snap to the left edge of the container */
+        top: 0;        /* Aligns it to the top */
+        animation: flyRight 4s linear infinite; 
     }
 </style>
 </head>
