@@ -3,29 +3,37 @@
 <style type="text/css">
     body {
         margin: 0px;
-        overflow: hidden; /* Prevents scrollbars */
-        height: 100vh;    /* Tells the body to fill the exact height of the Tableau container */
+        overflow: hidden; 
+        height: 100vh;    
         position: relative;
     }
 
-    /* 1. Define the flight path */
-    @keyframes flyRight {
+    /* 1. Define the flight path AND the scaling transformation */
+    @keyframes flyAndScale {
         0% {
-            transform: translateX(0); /* Starts exactly at its leftmost position */
+            /* Starts at normal size on the far left */
+            transform: translateX(0) scale(1, 1); 
+        }
+        50% {
+            /* At 2 seconds (50% of 4s), it stretches to 3x width and 1.25x height */
+            transform: translateX(50vw) scale(3, 1.25); 
         }
         100% {
-            transform: translateX(100vw); /* Flies off to the right side of the container */
+            /* Holds that stretched shape as it flies off the right side */
+            transform: translateX(100vw) scale(3, 1.25); 
         }
     }
 
     /* 2. Apply styling and animation to the bird */
     svg {
-        height: 100vh; /* Scales the bird so its height matches the container perfectly */
-        width: auto;   /* Ensures the bird doesn't stretch or warp */
+        height: 100vh; 
+        width: auto;   
         position: absolute;
-        left: 0;       /* Forces the bird to snap to the left edge of the container */
-        top: 0;        /* Aligns it to the top */
-        animation: flyRight 4s linear infinite; 
+        left: 0;       
+        top: 0;        
+        /* Ensures the bird stretches from its center, rather than its top-left corner */
+        transform-origin: center center; 
+        animation: flyAndScale 4s linear infinite; 
     }
 </style>
 </head>
